@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suryana — Network Admin, Data Specialist & Tech Solutions</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            accent: '#38bdf8'
+                        },
+                        neon: {
+                            green: '#10b981',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        
+        /* Ambient Animated Mesh Background */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.22;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .orb-blue { background: #3b82f6; width: 500px; height: 500px; top: -100px; left: -100px; }
+        .orb-purple { background: #8b5cf6; width: 450px; height: 450px; top: 400px; right: -100px; }
+        .orb-cyan { background: #06b6d4; width: 400px; height: 400px; bottom: 100px; left: 20%; }
+
+        /* Glassmorphism Luxury Cards */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 25px 60px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Live Indicator Pulse */
+        .live-pulse {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* Typography Gradients */
+        .gradient-heading {
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 70%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-subheading {
+            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #030712; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 99px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+    </style>
+</head>
+<body class="font-sans antialiased custom-scrollbar selection:bg-blue-600 selection:text-white">
+
+    <!-- Ambient Orbs -->
+    <div class="orb orb-blue"></div>
+    <div class="orb orb-purple"></div>
+    <div class="orb orb-cyan"></div>
+
+    <!-- Floating Pill Navigation -->
+    <header class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
+        <nav class="glass-card rounded-full px-6 py-3.5 flex items-center justify-between border border-white/10 shadow-2xl">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-600 via-cyan-500 to-emerald-400 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-blue-500/30 group-hover:rotate-12 transition duration-300">
+                    S
+                </div>
+                <span class="font-bold tracking-wider text-sm text-white">SURYANA<span class="text-blue-400">.TECH</span></span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-7 text-xs font-semibold text-slate-300">
+                <a href="#about" class="hover:text-blue-400 transition">Tentang</a>
+                <a href="#net-admin" class="hover:text-cyan-400 transition text-cyan-400 font-bold"><i class="fa-solid fa-network-wired mr-1"></i> Admin Network (PT)</a>
+                <a href="#wfh-freelance" class="hover:text-emerald-400 transition text-emerald-400 font-bold"><i class="fa-solid fa-laptop-code mr-1"></i> WFH Freelance</a>
+                <a href="#demo-app" class="text-blue-400 hover:text-blue-300 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-xs"></i> Interactive Simulator</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Proyek Web/IT</a>
+                <a href="#experience" class="hover:text-blue-400 transition">Pengalaman</a>
+            </div>
+
+            <a href="#contact" class="hidden sm:inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white text-xs font-bold shadow-lg shadow-blue-500/25 transition">
+                Hubungi Saya
+            </a>
+
+            <button id="menuBtn" class="lg:hidden text-slate-300 text-xl"><i class="fa-solid fa-bars-staggered"></i></button>
+        </nav>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-3 p-6 rounded-3xl glass-card border border-white/10 space-y-3">
+            <a href="#about" class="block py-2 text-slate-200 text-xs font-semibold">Tentang Saya</a>
+            <a href="#net-admin" class="block py-2 text-cyan-400 text-xs font-bold">Administrasi Teknisi Jaringan (PT)</a>
+            <a href="#wfh-freelance" class="block py-2 text-emerald-400 text-xs font-bold">Freelance WFH & Data Entry</a>
+            <a href="#demo-app" class="block py-2 text-blue-400 text-xs font-semibold">Interactive Tech Simulator</a>
+            <a href="#projects" class="block py-2 text-slate-200 text-xs font-semibold">Proyek Web & IT System</a>
+            <a href="#experience" class="block py-2 text-slate-200 text-xs font-semibold">Pengalaman Kerja (4+ Tahun)</a>
+            <a href="#contact" class="block py-3 text-center text-white bg-blue-600 rounded-xl text-xs font-bold shadow-lg">Rekrut / Sewa Jasa</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="pt-44 pb-24 px-6 max-w-7xl mx-auto min-h-screen flex items-center relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+            <div class="lg:col-span-7 space-y-8" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/90 border border-emerald-500/40 text-emerald-400 text-xs font-bold tracking-wide backdrop-blur-md">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 live-pulse"></span>
+                    Open for Corporate PT Roles & Freelance WFH Projects
+                </div>
+
+                <div class="space-y-4">
+                    <h1 class="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.1] gradient-heading">
+                        <span class="gradient-subheading text-2xl sm:text-4xl xl:text-5xl font-bold">Network Admin • Data Specialist • Web Dev</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                        Mahasiswa S1 Sistem Informasi UNPAM dengan <strong class="text-white">4+ Tahun Pengalaman Operasional Administrator & Gudang</strong>. Memiliki kombinasi keahlian administrasi teknisi jaringan (MikroTik/Topology/Inventory Log), ketelitian *Data Entry* presisi tinggi (MS Excel/Google Sheets), serta rekayasa sistem web modern.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#demo-app" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 hover:opacity-90 text-white font-bold text-xs shadow-xl shadow-blue-500/20 transition flex items-center gap-3">
+                        <i class="fa-solid fa-terminal"></i> Uji Simulasi Jaringan & Data
+                    </a>
+                    <a href="#contact" class="px-8 py-4 rounded-2xl glass-card text-slate-200 hover:text-white font-bold text-xs transition flex items-center gap-3 border border-white/10">
+                        <i class="fa-solid fa-paper-plane text-xs text-blue-400"></i> Hubungi Rekrutmen/Klien
+                    </a>
+                   <a href="assets/CV. SURYANA.pdf"
+   download="CV_Suryana.pdf"
+   class="px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition duration-300 flex items-center gap-2">
+    
+    <i class="fa-solid fa-file-pdf text-emerald-400"></i>
+    Unduh CV Resmi
+</a>
+                </div>
+
+                <!-- Live Performance Metrics -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400">100%</div>
+                        <div class="text-[11px] text-slate-400 mt-1">Sertifikasi & Kesiapan Jaringan</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">99.9%</div>
+                        <div class="text-[11px] text-slate-400 mt-1">Akurasi Data Entry & Excel</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-blue-400">4+ Thn</div>
+                        <div class="text-[11px] text-slate-400 mt-1">Pengalaman Admin PT / Logistik</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Frame Showcase -->
+            <div class="lg:col-span-5" data-aos="fade-up" data-aos-delay="150">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-400 to-emerald-400 rounded-3xl blur-xl opacity-40 group-hover:opacity-80 transition duration-500"></div>
+                    <div class="relative glass-card rounded-3xl p-8 space-y-6 text-center border border-white/10">
+                        
+                        <div class="relative w-44 h-44 mx-auto rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl group-hover:scale-105 transition duration-500">
+                            <img src="assets/profile.jpeg" alt="Foto Profil Suryana" class="w-full h-full object-cover">
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-extrabold text-white">SURYANA</h3>
+                            <p class="text-xs text-cyan-400 font-bold uppercase tracking-wider mt-1">S1 Sistem Informasi — UNPAM</p>
+                            <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-location-dot mr-1 text-blue-400"></i>Pandeglang, Banten / Ready On-Site & WFH Remote</p>
+                        </div>
+
+                        <div class="space-y-3 text-left text-xs">
+                            <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-white/5 flex items-center gap-3">
+                                <i class="fa-solid fa-server text-cyan-400 text-lg"></i>
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block font-bold uppercase">Target Perusahaan (PT)</span>
+                                    <span class="font-bold text-slate-200">Administrasi Teknisi Jaringan & IT Support</span>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-white/5 flex items-center gap-3">
+                                <i class="fa-solid fa-laptop-code text-emerald-400 text-lg"></i>
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block font-bold uppercase">Target Freelance WFH</span>
+                                    <span class="font-bold text-slate-200">Data Entry, Spreadsheet, & Web Solutions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/6285771868795" target="_blank" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs text-center block shadow-lg transition">
+                            <i class="fa-brands fa-whatsapp mr-2 text-base"></i> Hubungi Langsung via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ADMINISTRASI TEKNISI JARINGAN (UNTUK MELAMAR DI PT) -->
+    <section id="net-admin" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-cyan-500/30 space-y-8" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
+                    <div>
+                        <span class="px-4 py-1.5 rounded-full bg-cyan-950/90 text-cyan-400 border border-cyan-800/80 text-xs font-bold uppercase tracking-widest">
+                            Target Posisi PT / Corporate
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3">Administrasi Teknisi Jaringan & IT Support</h2>
+                    </div>
+                    <span class="px-4 py-2 rounded-full bg-cyan-600/20 text-cyan-300 border border-cyan-500/30 text-xs font-bold w-max">
+                        Kombinasi Skill Operasional & Network
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-cyan-500/40 transition">
+                        <i class="fa-solid fa-boxes-packing text-cyan-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">Inventarisasi & Logistik Perangkat IT</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Pendataan detail perangkat keras jaringan (Router MikroTik, Switch, Fiber Optic, Access Point), pengarsipan nomor seri (SN), penataan *stock opname* perangkat, dan pembuatan surat jalan/DO.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-cyan-500/40 transition">
+                        <i class="fa-solid fa-diagram-project text-cyan-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">Dokumentasi Topologi & Mapping Jaringan</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Pembuatan skema diagram topologi jaringan (LAN/WAN/VLAN), dokumentasi alokasi IP Address (Subnetting), labelisasi kabel server, dan penyusunan Standar Operasional Prosedur (SOP) jaringan.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-cyan-500/40 transition">
+                        <i class="fa-solid fa-clipboard-check text-cyan-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">Tiketing Helpdesk & Laporan Maintenance</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Pencatatan laporan gangguan teknis (*troubleshooting log*), penjadwalan pemeliharaan teknisi di lapangan, rekapitulasi SLA (Service Level Agreement), dan komunikasi aktif dengan vendor ISP.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: FREELANCE WFH DATA ENTRY & TECH SERVICES (UNTUK KLIEN FREELANCE) -->
+    <section id="wfh-freelance" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-emerald-500/30 space-y-8" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
+                    <div>
+                        <span class="px-4 py-1.5 rounded-full bg-emerald-950/90 text-emerald-400 border border-emerald-800/80 text-xs font-bold uppercase tracking-widest">
+                            Jasa Freelance WFH & Konsultasi
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3">Layanan Data Entry & Solusi Teknologi Informasi</h2>
+                    </div>
+                    <span class="px-4 py-2 rounded-full bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold w-max">
+                        Pengerjaan Cepat, Teliti, & Privasi Terjamin
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-emerald-500/40 transition">
+                        <i class="fa-solid fa-file-excel text-emerald-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">MS Excel / Spreadsheet Data Entry</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Pencatatan data penjualan, inventaris toko, data responden, formula VLOOKUP/XLOOKUP, Pivot Table, dan otomasi perhitungan data.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-emerald-500/40 transition">
+                        <i class="fa-solid fa-broom text-emerald-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">Data Cleaning & Archiving</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Merapikan data acak-acakan, penghapusan duplikasi data, konversi format PDF/Scan ke Word/Excel, serta pengarsipan cloud digital.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-emerald-500/40 transition">
+                        <i class="fa-solid fa-laptop-code text-emerald-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">Pembuatan Website Bisnis / Umkm</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Pengembangan landing page responsif, toko online e-commerce, company profile interaktif, dan optimasi tampilan mobile.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-950/60 border border-white/5 space-y-3 hover:border-emerald-500/40 transition">
+                        <i class="fa-solid fa-network-wired text-emerald-400 text-2xl"></i>
+                        <h3 class="text-base font-bold text-white">Konsultasi Network & System</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Perancangan skema jaringan kantor/cafe kecil, konfigurasi dasar MikroTik/WiFi, dan analisis alur sistem informasi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SIMULATION ENGINE (3 IN 1 DYNAMIC SIMULATOR) -->
+    <section id="demo-app" class="py-28 max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+            <span class="px-4 py-1.5 rounded-full bg-blue-950/80 text-blue-400 border border-blue-800/50 text-xs font-bold uppercase tracking-widest">
+                Interactive Multi-Engine Simulator
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-3">Simulasi Aplikasi Tech & Data Live</h2>
+            <p class="text-slate-400 text-xs sm:text-sm mt-3">
+                Coba langsung fitur interaktif pengolahan data jaringan, entri logistik delivery order, dan kalkulator gaji berikut:
+            </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl relative" data-aos="zoom-in">
+            <!-- Simulator Tab Selector -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <div class="w-3.5 h-3.5 rounded-full bg-rose-500"></div>
+                    <div class="w-3.5 h-3.5 rounded-full bg-amber-500"></div>
+                    <div class="w-3.5 h-3.5 rounded-full bg-emerald-500"></div>
+                    <span class="text-xs font-bold text-slate-300 ml-2 font-mono">Suryana_Core_Engine_v5.0</span>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <button id="tabNetBtn" onclick="switchSimTab('net')" class="px-4 py-2 rounded-xl bg-cyan-600 text-white text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-network-wired"></i> IP Subnet Calculator
+                    </button>
+                    <button id="tabDoBtn" onclick="switchSimTab('do')" class="px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-stacked"></i> Delivery Order Log
+                    </button>
+                    <button id="tabPayrollBtn" onclick="switchSimTab('payroll')" class="px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-calculator"></i> Payroll Calculator
+                    </button>
+                </div>
+            </div>
+
+            <!-- SIMULATOR 1: NETWORK IP SUBNET & DEVICE INVENTORY CALCULATOR -->
+            <div id="simNetView" class="space-y-6 pt-6">
+                <div class="max-w-2xl mx-auto space-y-6 bg-slate-950/60 p-6 sm:p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-base font-bold text-white text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-server text-cyan-400"></i> Kalkulator Subnetting IP & Alokasi Perangkat Jaringan
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">IP Address Utama</label>
+                            <input type="text" id="netIp" value="192.168.10.1" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-cyan-400 font-mono text-xs font-bold focus:outline-none focus:border-cyan-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Prefix / Subnet Mask</label>
+                            <select id="netPrefix" onchange="runNetCalc()" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-cyan-400 font-mono text-xs font-bold focus:outline-none focus:border-cyan-500">
+                                <option value="24">/24 (254 Host - Router / AP Utama)</option>
+                                <option value="25">/25 (126 Host - Departemen Admin)</option>
+                                <option value="26">/26 (62 Host - Server & Printer Room)</option>
+                                <option value="28">/28 (14 Host - Laboratorium Komputer)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gradient-to-r from-cyan-950 to-blue-950 border border-cyan-500/30 space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-400">Kapasitas Host Maksimal:</span>
+                            <span id="resMaxHost" class="font-bold text-cyan-300 font-mono">254 IP Host</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-400">Subnet Mask:</span>
+                            <span id="resSubnetMask" class="font-bold text-cyan-300 font-mono">255.255.255.0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-400">Rekomendasi Penggunaan:</span>
+                            <span id="resNetUsage" class="font-bold text-emerald-400 text-right">Ideal untuk Jaringan Utama Kantor / PT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMULATOR 2: DATA DELIVERY ORDER & INVENTORY -->
+            <div id="simDoView" class="space-y-6 pt-6 hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <input type="text" id="searchInput" placeholder="Cari No. DO / Toko..." class="px-4 py-2.5 rounded-2xl text-xs bg-slate-950 border border-white/10 text-slate-200 focus:outline-none focus:border-blue-500 w-full sm:w-72">
+                    <button onclick="openAddModal()" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-plus"></i> Input DO Baru
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-2xl bg-blue-950/40 border border-blue-800/40">
+                        <div class="text-[10px] text-blue-400 font-bold uppercase">Total DO Recorded</div>
+                        <div id="statTotal" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">5 DO</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-800/40">
+                        <div class="text-[10px] text-emerald-400 font-bold uppercase">Status Delivered</div>
+                        <div id="statDelivered" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">3 DO</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-amber-950/40 border border-amber-800/40">
+                        <div class="text-[10px] text-amber-400 font-bold uppercase">Dalam Process</div>
+                        <div id="statPending" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">1 DO</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-rose-950/40 border border-rose-800/40">
+                        <div class="text-[10px] text-rose-400 font-bold uppercase">Retur / Kendala</div>
+                        <div id="statRetur" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">1 DO</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-8 overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-xs text-left">
+                            <thead class="uppercase bg-slate-950 text-slate-400 font-bold">
+                                <tr>
+                                    <th class="p-3.5">No. DO</th>
+                                    <th class="p-3.5">Toko / Customer</th>
+                                    <th class="p-3.5">Ekspedisi</th>
+                                    <th class="p-3.5">Koli</th>
+                                    <th class="p-3.5">Status</th>
+                                    <th class="p-3.5 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="doTableBody" class="divide-y divide-white/5">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="lg:col-span-4 p-5 rounded-2xl bg-slate-950/60 border border-white/5 flex flex-col items-center justify-center">
+                        <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Ratio Visualizer</h4>
+                        <div class="w-full h-48 flex justify-center">
+                            <canvas id="doChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMULATOR 3: PAYROLL CALCULATOR -->
+            <div id="simPayrollView" class="space-y-6 pt-6 hidden">
+                <div class="max-w-2xl mx-auto space-y-6 bg-slate-950/60 p-6 sm:p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-lg font-bold text-white text-center">Simulasi Kalkulasi Otomatis Gaji Pekerja Harian</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Gaji Pokok Harian (Rp)</label>
+                            <input type="number" id="payBase" value="150000" oninput="runPayrollCalc()" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs font-bold focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Hari Kerja (Hari)</label>
+                            <input type="number" id="payDays" value="22" oninput="runPayrollCalc()" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs font-bold focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Jam Lembur (Jam)</label>
+                            <input type="number" id="payOvertime" value="10" oninput="runPayrollCalc()" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs font-bold focus:outline-none focus:border-emerald-500">
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-teal-950 border border-emerald-500/30 text-center space-y-1">
+                        <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider block">ESTIMASI TAKE HOME PAY (OTOMATIS)</span>
+                        <div id="payResult" class="text-3xl font-black text-emerald-300">Rp 3,581,250</div>
+                        <p class="text-[11px] text-slate-400 pt-1">*Perhitungan otomatis tarif lembur per jam = (Gaji Harian / 8) x 1.5</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal Form Add DO -->
+    <div id="addModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card p-8 rounded-3xl max-w-md w-full border border-white/10 shadow-2xl space-y-6">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="text-lg font-bold text-white">Input Delivery Order Baru</h3>
+                <button onclick="closeAddModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <form id="doForm" onsubmit="handleAddDO(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">NO. DELIVERY ORDER</label>
+                    <input type="text" id="inputDO" required placeholder="Contoh: DO-2026-0901" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">NAMA TOKO / CLIENT</label>
+                    <input type="text" id="inputCustomer" required placeholder="Contoh: Toko Maju Jaya" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">EKSPEDISI</label>
+                        <select id="inputExpedition" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                            <option value="J&T Cargo">J&T Cargo</option>
+                            <option value="JNE Trucking">JNE Trucking</option>
+                            <option value="SiCepat Dok">SiCepat Dok</option>
+                            <option value="Internal Fleet">Internal Fleet</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">JUMLAH KOLI</label>
+                        <input type="number" id="inputQty" required min="1" value="5" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">STATUS PENGIRIMAN</label>
+                    <select id="inputStatus" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                        <option value="Delivered">Delivered (Terkirim)</option>
+                        <option value="Pending">Pending (Proses)</option>
+                        <option value="Retur">Retur / Kendala</option>
+                    </select>
+                </div>
+                <div class="pt-4 flex gap-3">
+                    <button type="button" onclick="closeAddModal()" class="w-1/2 py-3 rounded-xl bg-slate-900 text-xs font-bold text-slate-300">Batal</button>
+                    <button type="submit" class="w-1/2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-lg">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SKILLS SHOWCASE -->
+    <section id="skills" class="py-28 max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4" data-aos="fade-up">
+            <div>
+                <span class="px-4 py-1.5 rounded-full bg-blue-950/80 text-blue-400 border border-blue-800/50 text-xs font-bold uppercase tracking-widest">
+                    Kompetensi Multidisiplin
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Keahlian Network, Data, & Web</h2>
+            </div>
+            <p class="text-slate-400 text-xs max-w-md">Solusi lengkap untuk operasional perusahaan maupun kebutuhan proyek digital klien freelance.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-cyan-500/50 transition group" data-aos="fade-up">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-3">Networking & IT Support</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="px-3 py-1.5 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800 font-semibold">MikroTik Router</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">Subnetting IP</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">LAN / Access Point</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">Hardware Log</span>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-emerald-500/50 transition group" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-file-excel"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-3">Data Operations</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="px-3 py-1.5 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800 font-semibold">MS Excel Advanced</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">Google Sheets</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">Data Cleaning</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">VLOOKUP/XLOOKUP</span>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-blue-500/50 transition group" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-12 h-12 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-3">Web Development</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="px-3 py-1.5 rounded-xl bg-blue-950 text-blue-400 border border-blue-800 font-semibold">Laravel PHP</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800 font-semibold">React.js</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">Tailwind CSS</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">REST API</span>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-purple-500/50 transition group" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-12 h-12 rounded-2xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-3">System & Database</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="px-3 py-1.5 rounded-xl bg-purple-950 text-purple-400 border border-purple-800 font-semibold">MySQL Engine</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">ERD Relasi</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/5 text-slate-300">UML / Use Case</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO PROJECTS SHOWCASE -->
+    <section id="projects" class="py-28 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <span class="px-4 py-1.5 rounded-full bg-blue-950/80 text-blue-400 border border-blue-800/50 text-xs font-bold uppercase tracking-widest">
+                    Portfolio Showcase
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-3">Proyek & Sistem Web</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Project 01 -->
+                <div class="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" data-aos="fade-up">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="assets/project1.png" alt="Sistem Absensi & Penggajian" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-blue-950/90 text-blue-400 border border-blue-800/80 text-xs font-bold uppercase backdrop-blur-md">
+                                01 — Web Application
+                            </span>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition">Sistem Informasi Absensi & Penggajian</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Aplikasi web manajemen absensi presisi berbasis Geolocation dan sistem kalkulasi otomatis jam lembur & slip payroll pekerja harian lepas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 font-mono">Laravel • MySQL • JS</span>
+                        <a href="project-1.html" class="inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-blue-300 group-hover:translate-x-1 transition">
+                            Studi Kasus Proyek <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 02 -->
+                <div class="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="assets/project2.png" alt="Website Cahaya Interior" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-cyan-950/90 text-cyan-400 border border-cyan-800/80 text-xs font-bold uppercase backdrop-blur-md">
+                                02 — Company Profile
+                            </span>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition">Website Showcase Cahaya Interior</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Website profil perusahaan interaktif untuk memperkuat identitas brand bisnis jasa interior dan galeri katalog portofolio desain.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 font-mono">Tailwind CSS • JavaScript</span>
+                        <a href="project-2.html" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition">
+                            Studi Kasus Proyek <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 03 -->
+                <div class="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="assets/project3.png" alt="SMART DAILY SHOP" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-emerald-950/90 text-emerald-400 border border-emerald-800/80 text-xs font-bold uppercase backdrop-blur-md">
+                                03 — E-Commerce Platform
+                            </span>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition">SMART DAILY SHOP E-Commerce</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Platform toko online digital yang dirancang untuk mengelola katalog produk kebutuhan harian dan alur checkout pemesanan secara fleksibel.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 font-mono">Odoo / Web Tech</span>
+                        <a href="project-3.html" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 group-hover:translate-x-1 transition">
+                            Studi Kasus Proyek <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 04 -->
+                <div class="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="assets/project4.png" alt="Marketplace Sparepart Motor" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-amber-950/90 text-amber-400 border border-amber-800/80 text-xs font-bold uppercase backdrop-blur-md">
+                                04 — Digital Marketplace
+                            </span>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-amber-400 transition">Marketplace Sparepart Motor Digital</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Konsep platform e-commerce spesifik produk sparepart kendaraan bermotor dengan fitur filter pencarian cepat dan sistem checkout praktis.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 font-mono">UI/UX • Process Design</span>
+                        <a href="project-4.html" class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:text-amber-300 group-hover:translate-x-1 transition">
+                            Studi Kasus Proyek <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience" class="py-28 max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-7 space-y-8" data-aos="fade-up">
+                <div>
+                    <span class="px-4 py-1.5 rounded-full bg-blue-950/80 text-blue-400 border border-blue-800/50 text-xs font-bold uppercase tracking-widest">
+                        Career Journey
+                    </span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3">Pengalaman Kerja</h2>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 border border-white/10 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Administration & Warehouse</h3>
+                            <p class="text-xs text-blue-400 font-bold mt-1">PT Sinergi Multi Distrindo (2022 - 2026)</p>
+                        </div>
+                        <span class="px-3.5 py-1.5 rounded-full bg-blue-950 text-blue-300 border border-blue-800 text-xs font-bold w-max">
+                            4 Tahun Pengalaman
+                        </span>
+                    </div>
+
+                    <p class="text-xs text-slate-400 leading-relaxed italic">
+                        Berpengalaman langsung dalam aktivitas administrasi distributor, pengelolaan data operasional, dan logistik warehouse yang memberikan pemahaman riil akan alur proses bisnis di lapangan.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+                        <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i> Input & pengolahan data DO ke Excel</div>
+                        <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i> Penyusunan laporan DO harian</div>
+                        <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i> Monitoring outstanding pengiriman</div>
+                        <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i> Dokumentasi & archiving administrasi</div>
+                        <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i> Koordinasi aktif dengan mitra ekspedisi</div>
+                        <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i> Penanganan retur, shortage, & barang rusak</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-8" data-aos="fade-up" data-aos-delay="150">
+                <div>
+                    <span class="px-4 py-1.5 rounded-full bg-cyan-950/80 text-cyan-400 border border-cyan-800/50 text-xs font-bold uppercase tracking-widest">
+                        Education
+                    </span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3">Pendidikan</h2>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 border border-white/10 space-y-6">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">S1 Sistem Informasi</h3>
+                        <p class="text-xs text-cyan-400 font-bold mt-1">Universitas Pamulang</p>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/5 space-y-3">
+                        <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fokus Pembelajaran Akademis:</h4>
+                        <div class="flex flex-wrap gap-1.5 text-xs">
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-950 border border-white/5 text-slate-300">Sistem Informasi</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-950 border border-white/5 text-slate-300">Pemrograman Web</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-950 border border-white/5 text-slate-300">Database Engine</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-950 border border-white/5 text-slate-300">Analisis Sistem</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-28 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-card rounded-3xl p-8 sm:p-14 border border-white/10 relative overflow-hidden" data-aos="zoom-in">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-6">
+                        <span class="px-4 py-1.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 text-xs font-bold uppercase tracking-widest">
+                            Ready to Hire
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Hubungi Saya untuk Rekrutmen & Proyek</h2>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Terbuka penuh untuk panggilan kerja <strong class="text-white">Administrasi Teknisi Jaringan (PT)</strong>, <strong class="text-white">Data Entry Remote WFH</strong>, maupun proyek pembuatan website/aplikasi.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <a href="mailto:bangyana376@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 hover:bg-slate-900 transition border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-slate-400 font-bold uppercase">EMAIL</div>
+                                    <div class="font-bold text-white text-xs">bangyana376@gmail.com</div>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/6285771868795" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 hover:bg-slate-900 transition border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-slate-400 font-bold uppercase">WHATSAPP / TELEPON</div>
+                                    <div class="font-bold text-white text-xs">085771868795</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950/80 p-8 rounded-3xl border border-white/5 space-y-4">
+                        <h3 class="text-lg font-bold text-white">Kirim Pesan Tawaran Kerja / Proyek</h3>
+                        <form onsubmit="alert('Terima kasih! Pesan Anda telah terkirim kepada Suryana.'); return false;" class="space-y-4">
+                            <div>
+                                <input type="text" required placeholder="Nama Rekruiter / Nama Klien Freelance" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div>
+                                <input type="email" required placeholder="Email Kontak Anda" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div>
+                                <textarea rows="4" required placeholder="Tuliskan tawaran posisi (Admin Network / Data Entry WFH / Project), detail atau anggaran..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 hover:opacity-90 text-white font-bold text-xs rounded-xl shadow-lg transition">
+                                Kirim Pesan Sekarang
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-xs text-slate-500 mt-16">
+                © 2026 SURYANA — Network Admin, Data Entry WFH & Web Solution Portfolio.
+            </div>
+        </div>
+    </section>
+
+    <!-- App Logic Scripts -->
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Multi-Tab Simulator Logic
+        function switchSimTab(tab) {
+            const simNetView = document.getElementById('simNetView');
+            const simDoView = document.getElementById('simDoView');
+            const simPayrollView = document.getElementById('simPayrollView');
+            
+            const tabNetBtn = document.getElementById('tabNetBtn');
+            const tabDoBtn = document.getElementById('tabDoBtn');
+            const tabPayrollBtn = document.getElementById('tabPayrollBtn');
+
+            simNetView.classList.add('hidden');
+            simDoView.classList.add('hidden');
+            simPayrollView.classList.add('hidden');
+
+            tabNetBtn.className = "px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-2";
+            tabDoBtn.className = "px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-2";
+            tabPayrollBtn.className = "px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-2";
+
+            if(tab === 'net') {
+                simNetView.classList.remove('hidden');
+                tabNetBtn.className = "px-4 py-2 rounded-xl bg-cyan-600 text-white text-xs font-bold transition flex items-center gap-2";
+            } else if(tab === 'do') {
+                simDoView.classList.remove('hidden');
+                tabDoBtn.className = "px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold transition flex items-center gap-2";
+            } else if(tab === 'payroll') {
+                simPayrollView.classList.remove('hidden');
+                tabPayrollBtn.className = "px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold transition flex items-center gap-2";
+                runPayrollCalc();
+            }
+        }
+
+        // Subnet Calculator Logic
+        function runNetCalc() {
+            const prefix = document.getElementById('netPrefix').value;
+            const resMaxHost = document.getElementById('resMaxHost');
+            const resSubnetMask = document.getElementById('resSubnetMask');
+            const resNetUsage = document.getElementById('resNetUsage');
+
+            if(prefix === '24') {
+                resMaxHost.innerText = "254 IP Host";
+                resSubnetMask.innerText = "255.255.255.0";
+                resNetUsage.innerText = "Ideal untuk Jaringan Utama Kantor / PT";
+            } else if(prefix === '25') {
+                resMaxHost.innerText = "126 IP Host";
+                resSubnetMask.innerText = "255.255.255.128";
+                resNetUsage.innerText = "Ideal untuk Subnet Divisi Administrasi & Staff";
+            } else if(prefix === '26') {
+                resMaxHost.innerText = "62 IP Host";
+                resSubnetMask.innerText = "255.255.255.192";
+                resNetUsage.innerText = "Ideal untuk Ruang Server & Router MikroTik";
+            } else if(prefix === '28') {
+                resMaxHost.innerText = "14 IP Host";
+                resSubnetMask.innerText = "255.255.255.240";
+                resNetUsage.innerText = "Ideal untuk Jaringan Point-to-Point / AP Terisolasi";
+            }
+        }
+
+        // Live Payroll Calculation Logic
+        function runPayrollCalc() {
+            const base = parseFloat(document.getElementById('payBase').value) || 0;
+            const days = parseFloat(document.getElementById('payDays').value) || 0;
+            const overtime = parseFloat(document.getElementById('payOvertime').value) || 0;
+            
+            const hourlyOvertimeRate = (base / 8) * 1.5;
+            const total = (base * days) + (overtime * hourlyOvertimeRate);
+            
+            document.getElementById('payResult').innerText = "Rp " + total.toLocaleString('id-ID');
+        }
+
+        // Initial Delivery Order Data
+        let initialData = [
+            { doNo: 'DO-2026-0901', customer: 'Toko Berkah Mandiri', expedition: 'J&T Cargo', qty: 15, status: 'Delivered' },
+            { doNo: 'DO-2026-0902', customer: 'CV Sinar Utama', expedition: 'JNE Trucking', qty: 30, status: 'Delivered' },
+            { doNo: 'DO-2026-0903', customer: 'Toko Cahaya Interior', expedition: 'Internal Fleet', qty: 8, status: 'Pending' },
+            { doNo: 'DO-2026-0904', customer: 'PT Sentosa Abadi', expedition: 'SiCepat Dok', qty: 45, status: 'Delivered' },
+            { doNo: 'DO-2026-0905', customer: 'Smart Daily Shop Customer', expedition: 'J&T Cargo', qty: 4, status: 'Retur' }
+        ];
+
+        let chartInstance = null;
+
+        function renderTable(dataToRender) {
+            const tbody = document.getElementById('doTableBody');
+            tbody.innerHTML = '';
+
+            dataToRender.forEach((item, index) => {
+                let badgeClass = '';
+                if(item.status === 'Delivered') badgeClass = 'bg-emerald-950 text-emerald-400 border-emerald-800';
+                else if(item.status === 'Pending') badgeClass = 'bg-amber-950 text-amber-400 border-amber-800';
+                else badgeClass = 'bg-rose-950 text-rose-400 border-rose-800';
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-white/5 transition";
+                tr.innerHTML = `
+                    <td class="p-3.5 font-bold text-blue-400">${item.doNo}</td>
+                    <td class="p-3.5 font-medium text-slate-200">${item.customer}</td>
+                    <td class="p-3.5 text-slate-400">${item.expedition}</td>
+                    <td class="p-3.5 font-semibold text-slate-300">${item.qty} Box</td>
+                    <td class="p-3.5"><span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${badgeClass}">${item.status}</span></td>
+                    <td class="p-3.5 text-center">
+                        <button onclick="deleteDO(${index})" class="text-rose-400 hover:text-rose-300 text-xs font-bold"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            updateStats();
+            updateChart();
+        }
+
+        function updateStats() {
+            document.getElementById('statTotal').innerText = initialData.length + ' DO';
+            document.getElementById('statDelivered').innerText = initialData.filter(d => d.status === 'Delivered').length + ' DO';
+            document.getElementById('statPending').innerText = initialData.filter(d => d.status === 'Pending').length + ' DO';
+            document.getElementById('statRetur').innerText = initialData.filter(d => d.status === 'Retur').length + ' DO';
+        }
+
+        function updateChart() {
+            const ctx = document.getElementById('doChart').getContext('2d');
+            const delivered = initialData.filter(d => d.status === 'Delivered').length;
+            const pending = initialData.filter(d => d.status === 'Pending').length;
+            const retur = initialData.filter(d => d.status === 'Retur').length;
+
+            if(chartInstance) chartInstance.destroy();
+
+            chartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Terkirim', 'Pending', 'Retur'],
+                    datasets: [{
+                        data: [delivered, pending, retur],
+                        backgroundColor: ['#10b981', '#f59e0b', '#f43f5e'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 }, color: '#94a3b8' } }
+                    }
+                }
+            });
+        }
+
+        function openAddModal() { document.getElementById('addModal').classList.remove('hidden'); }
+        function closeAddModal() { document.getElementById('addModal').classList.add('hidden'); }
+
+        function handleAddDO(e) {
+            e.preventDefault();
+            const doNo = document.getElementById('inputDO').value;
+            const customer = document.getElementById('inputCustomer').value;
+            const expedition = document.getElementById('inputExpedition').value;
+            const qty = document.getElementById('inputQty').value;
+            const status = document.getElementById('inputStatus').value;
+
+            initialData.unshift({ doNo, customer, expedition, qty, status });
+            renderTable(initialData);
+            closeAddModal();
+            document.getElementById('doForm').reset();
+        }
+
+        function deleteDO(index) {
+            initialData.splice(index, 1);
+            renderTable(initialData);
+        }
+
+        document.getElementById('searchInput')?.addEventListener('keyup', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = initialData.filter(d => d.doNo.toLowerCase().includes(query) || d.customer.toLowerCase().includes(query));
+            renderTable(filtered);
+        });
+
+        renderTable(initialData);
+    </script>
+</body>
+</html>
