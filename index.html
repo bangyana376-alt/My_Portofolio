@@ -1222,35 +1222,36 @@
             </div>
 
             <!-- FORM DENGAN MAILTO -->
-            <div class="bg-slate-950/90 p-8 rounded-3xl border border-white/5 space-y-4">
-                <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-pen-to-square"></i> Kirim Pesan / Proyek Freelance</h3>
-                <p class="text-[10px] text-slate-400">*Pesan akan terbuka di aplikasi email Anda (Gmail/Outlook/dll). Kirim manual dari sana.</p>
+          <!-- FORM DENGAN MAILTO + RESET + TOAST -->
+<div class="bg-slate-950/90 p-8 rounded-3xl border border-white/5 space-y-4">
+    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-pen-to-square"></i> Kirim Pesan / Proyek Freelance</h3>
+    <p class="text-[10px] text-slate-400">*Pesan akan terbuka di aplikasi email Anda (Gmail/Outlook/dll). Kirim manual dari sana.</p>
 
-                <form action="mailto:bangyana376@gmail.com" method="POST" enctype="text/plain" class="space-y-4">
-                    <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Nama / Perusahaan</label>
-                        <input type="text" name="Nama" required placeholder="Nama / Perusahaan" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Email Anda</label>
-                        <input type="email" name="Email" required placeholder="Email Anda" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Pesan / Detail Proyek</label>
-                        <textarea name="Pesan" rows="4" required placeholder="Detail kebutuhan proyek atau tawaran kerja..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500"></textarea>
-                    </div>
-                    <div class="flex gap-3">
-                        <button type="submit" class="w-full py-3.5 shimmer-btn text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
-                        </button>
-                        <a href="https://wa.me/6285771868795" target="_blank" class="py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2 shrink-0">
-                            <i class="fa-brands fa-whatsapp"></i> WA
-                        </a>
-                    </div>
-                </form>
+    <form id="contactForm" action="mailto:bangyana376@gmail.com" method="POST" enctype="text/plain" class="space-y-4">
+        <div>
+            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Nama / Perusahaan</label>
+            <input type="text" name="Nama" id="contactName" required placeholder="Nama / Perusahaan" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Email Anda</label>
+            <input type="email" name="Email" id="contactEmail" required placeholder="Email Anda" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Pesan / Detail Proyek</label>
+            <textarea name="Pesan" id="contactMessage" rows="4" required placeholder="Detail kebutuhan proyek atau tawaran kerja..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:outline-none focus:border-blue-500"></textarea>
+        </div>
+        <div class="flex gap-3">
+            <button type="submit" id="submitBtn" class="w-full py-3.5 shimmer-btn text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+            </button>
+            <a href="https://wa.me/6285771868795" target="_blank" class="py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2 shrink-0">
+                <i class="fa-brands fa-whatsapp"></i> WA
+            </a>
+        </div>
+    </form>
 
-                <p class="text-[10px] text-slate-500 text-center pt-2 border-t border-white/5">Atau hubungi langsung via WhatsApp dengan tombol di atas.</p>
-            </div>
+    <p class="text-[10px] text-slate-500 text-center pt-2 border-t border-white/5">Atau hubungi langsung via WhatsApp dengan tombol di atas.</p>
+</div>
         </div>
     </div>
     <footer class="text-center text-xs text-slate-500 mt-16 pb-8">© 2026 SURYANA — WFH Data Entry Specialist & IT Freelancer.</footer>
