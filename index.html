@@ -1666,6 +1666,37 @@
 
         // Initial render
         renderTable(initialData);
+        // ----- FORM CONTACT MAILTO + RESET + TOAST -----
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const contactName = document.getElementById('contactName');
+const contactEmail = document.getElementById('contactEmail');
+const contactMessage = document.getElementById('contactMessage');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Tampilkan toast notifikasi
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+        if (toast && toastMsg) {
+            toastMsg.innerText = '📧 Email client akan terbuka! Kirim manual dari sana.';
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Reset form setelah 1 detik (memberi waktu mailto terbuka)
+        setTimeout(() => {
+            contactName.value = '';
+            contactEmail.value = '';
+            contactMessage.value = '';
+        }, 1000);
+
+        // Biarkan mailto tetap berjalan
+        // e.preventDefault() TIDAK dipanggil agar mailto tetap bekerja
+    });
+}
     </script>
 </body>
 </html>
